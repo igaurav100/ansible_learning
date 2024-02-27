@@ -1,0 +1,15 @@
+---
+- name: Installing nginx on localhost
+  hosts: localhost
+  gather_facts: false
+  vars: 
+    myvalue: 4
+    mylist: [3,6,7,32,8]
+    mydict: 
+      myfirst: 4
+      mysecond: 5
+      mythird: 9
+  tasks:
+    - name: printing values 
+      debug:
+        msg: "{{myvalue}} , {{mylist}} , {{mydict}}"

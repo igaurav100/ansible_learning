@@ -1,0 +1,12 @@
+---
+- name: Installing nginx on localhost
+  hosts: localhost
+  gather_facts: true
+  vars: 
+   x: 9
+   y: 6
+   z: "hello world"
+  tasks:
+    - name: printing variables
+      debug:
+        msg: "the value of x is {{x}} y is {{y}} z is {{z}}"

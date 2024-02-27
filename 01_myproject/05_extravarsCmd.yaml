@@ -1,0 +1,9 @@
+---
+- name: extra vars by Cmd Line
+  hosts: controller
+  gather_facts: false
+  tasks:
+   - debug:
+      msg:
+       - " x value passed from CmdLine is {{x}}"
+       - " y value password from CMdLine is {{y}}"

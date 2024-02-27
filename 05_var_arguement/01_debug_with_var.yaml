@@ -1,0 +1,15 @@
+---
+- name: vars with debug 
+  hosts: controller, centos
+  gather_facts: false
+  vars:
+    x: 8
+    y: 7
+    z: "hello world"
+  tasks:
+    - name: Printing the var 
+      debug:
+        msg:
+          - "The value of x is {{x}}"
+          - "The value of x is {{y}}"
+          - "The value of x is {{z}}"

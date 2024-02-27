@@ -1,0 +1,21 @@
+---
+- name: Installing nginx on localhost
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: Installing nginx 
+      package:
+        name: nginx
+        state: present
+        update_cache: true
+      become: true
+
+    - name: store the uptime of the system
+      command:
+        cmd: 'uptime'
+      register: uptimeinfo
+
+    - name: show the uptime of the system
+      debug:
+        msg: "uptime {{uptimeinfo}}"
+

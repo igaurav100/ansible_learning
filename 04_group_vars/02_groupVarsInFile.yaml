@@ -1,0 +1,8 @@
+---
+- name: Installing nginx on localhost
+  hosts: localhost,centos
+  gather_facts: false
+  tasks:
+   - name: printing group vars variables
+     debug: 
+      msg: "{{salute}} {{name}} goodday"

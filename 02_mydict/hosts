@@ -1,0 +1,12 @@
+[controller]
+localhost ansible_user=ironman ansible_password=ironman ansible_password=ironman ansible_become_password=ironman ansible_become=true
+
+[ubuntu]
+192.168.86.135 ansible_user=ironman ansible_password=ironman ansible_password=ironman ansible_become_password=ironman ansible_become=true
+# 192.168.86.129 ansible_user=ironman ansible_password=ironman ansible_password=ironman ansible_become_password=ironman ansible_become=true
+
+[centos]
+192.168.86.134 ansible_user=ironman ansible_password=ironman ansible_password=ironman ansible_become_password=ironman ansible_become=true
+
+# [centos]
+# [centos]

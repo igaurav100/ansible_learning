@@ -1,0 +1,11 @@
+---
+- name: Testing host vars
+  hosts: localhost, 192.168.86.134
+  gather_facts: false
+  tasks:
+    - name: printing host vars on target
+      debug:
+        msg:
+         - "X value is {{x}}"
+         - "Y value is {{y}}"
+

@@ -1,0 +1,13 @@
+---
+- name: vars with file
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+   - varsWithYaml.yaml
+   - myDict.yaml
+  tasks:
+   - name: printing values 
+     debug:
+      msg:
+       - "My vars from varsWithYaml: {{myvar}} and {{mylist}}"
+       - "My vars from myDict: {{mydict}}"
