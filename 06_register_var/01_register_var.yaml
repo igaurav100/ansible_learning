@@ -1,0 +1,16 @@
+---
+- name: vars with debug 
+  hosts: controller, centos
+  gather_facts: false
+  tasks:
+    - name: Checking the uname
+      command:
+        cmd: "uname"
+      register: unameOutput
+
+    - name: Printing unameOutput
+      debug:
+        #msg: unameOutput
+        # msg: "{{unameOutput.stdout}}"
+        var: unameOutput.stdout
+     
