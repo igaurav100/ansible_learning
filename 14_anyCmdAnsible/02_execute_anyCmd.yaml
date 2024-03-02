@@ -1,0 +1,13 @@
+---
+- name: execute any cmd using ansible 
+  hosts: "{{target}}"
+  gather_facts: false
+  tasks:
+    - name: executing given command
+      command:
+        cmd: "{{inputCmd}}"
+      register: cmdOut
+
+    - name: display result 
+      debug:
+        msg: "{{cmdOut.stdout if cmdOut.stdout | length !=0 else cmdOut.stderr}}"
