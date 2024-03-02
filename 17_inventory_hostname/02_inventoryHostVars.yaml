@@ -1,0 +1,8 @@
+---
+- name: execute any cmd using ansible 
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: Display hostname
+      debug:
+        msg: "{{hostvars}}"

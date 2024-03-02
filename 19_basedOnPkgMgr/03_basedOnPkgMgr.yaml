@@ -1,0 +1,21 @@
+# Error in this playbook
+
+---
+- name: name finding the package manager
+  hosts: centos, ubuntu
+  gather_facts: true
+  vars:
+    reqPkgs:
+      "apt": ['apache2','vim','nginx']
+      "yum": ['httpd','vim','nginx']
+      "dnf": ['httpd','vim','nginx']
+  tasks:
+    - name: Checking the package manager
+      debug:
+        msg: 
+          - "{{ansible_facts.pkg_mgr}}"
+          - "{{reqPkgs}}"
+          - "{{reqPkgs.keys()}}"
+          - "{{reqPkgs.values()}}"
+
+     

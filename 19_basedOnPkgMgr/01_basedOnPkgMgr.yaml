@@ -1,0 +1,8 @@
+---
+- name: name finding the package manager
+  hosts: centos, ubuntu
+  gather_facts: true
+  tasks:
+    - name: Checking the package manager
+      debug:
+        msg: "{{ansible_facts.pkg_mgr}}"

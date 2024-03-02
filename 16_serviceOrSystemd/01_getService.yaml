@@ -1,0 +1,12 @@
+---
+- name: execute any cmd using ansible 
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: finding systemd facts with service_facts module
+      service_facts:
+
+    - name: display systemd facts
+      debug:
+        msg:
+          - "{{ansible_facts}}"

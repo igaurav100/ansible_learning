@@ -1,0 +1,21 @@
+---
+- name: removing multi packges
+  hosts: centos, ubuntu
+  gather_facts: true
+  tasks:
+    - name: removing multi pckages on RHEL
+      yum:
+        name:
+          - nginx
+          - vim
+          - wget
+        state: absent
+      when: ansible_os_family == "RedHat" 
+    - name: Removing multi pckages on Ubuntu
+      apt:
+        name:
+          - nginx
+          - vim
+          - wget
+        state: absent
+      when: ansible_os_family == "Debian"

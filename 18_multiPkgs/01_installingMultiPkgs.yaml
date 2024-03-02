@@ -1,0 +1,21 @@
+---
+- name: installing multi packges
+  hosts: centos, ubuntu
+  gather_facts: true
+  tasks:
+    - name: installing multi pckages on RHEL
+      yum:
+        name:
+          - nginx
+          - vim
+          - wget
+        state: present
+      when: ansible_os_family == "RedHat" 
+    - name: installing multi pckages on Ubuntu
+      apt:
+        name:
+          - nginx
+          - vim
+          - wget
+        state: present
+      when: ansible_os_family == "Debian"
