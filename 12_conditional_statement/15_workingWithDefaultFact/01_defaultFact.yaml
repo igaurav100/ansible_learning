@@ -1,0 +1,10 @@
+---
+- name: execute any cmd using ansible 
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: tasks with setup module to gather facts
+      setup:
+    - name: display the default facts
+      debug:
+        msg: "{{ansible_facts.os_family}}" 

@@ -1,0 +1,14 @@
+---
+- name: get python version
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: executing python version using cmd 
+      command:
+        cmd: 'python3 --version'
+      register: pyOut
+
+    - name: showing python version
+      debug:
+        msg: "python version is {{pyOut.stdout}}"
+  
