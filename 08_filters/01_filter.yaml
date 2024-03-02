@@ -1,0 +1,23 @@
+---
+- name: set facts 
+  hosts: localhost
+  gather_facts: false
+  vars: 
+   a: "ansible"
+   p: "hi"
+   q: "bye"
+   r: "bye"
+  tasks:
+   - name: debug tasks
+     debug:
+      msg:
+       - "a is value {{a}}"
+       - "a in upper {{a|upper}}"
+       - "a in upper {{a.upper}}"
+       - "a in upper {{a.upper()}}"
+       - "p={{p}} q={{q}} r={{r}}"
+       - "p==q: {{p==q}}"
+       - "p==r: {{p==r}}"
+       - "p!=q: {{p!=q}}"
+       - "q==r: {{q==r}}"
+       - "{{'a' in a }}"

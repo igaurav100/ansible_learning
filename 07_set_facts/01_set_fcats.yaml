@@ -1,0 +1,19 @@
+---
+- name: set facts 
+  hosts: controller, centos
+  gather_facts: false
+  vars:
+    x: 6
+  tasks:
+    - name: Checking the value of x before setfact
+      debug:
+        msg: "the value of x before setfact is {{x}}"
+
+    - name: setting new facts 
+      set_fact:
+        x: 9
+        y: 4
+
+    - name: printing new facts
+      debug:
+        msg: "the value of x after setfact x: {{x}} y:{{y}}"
