@@ -1,0 +1,6 @@
+---
+- name: installing using import files
+  hosts: centos, ubuntu
+  gather_facts: true
+  tasks:
+    - include_tasks: install_{{ansible_facts.os_family}}_pkg.yaml

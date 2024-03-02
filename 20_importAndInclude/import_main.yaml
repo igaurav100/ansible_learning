@@ -1,0 +1,9 @@
+---
+- name: installing using import files
+  hosts: centos, ubuntu
+  gather_facts: true
+  tasks:
+    - include_tasks: install_RedHat_pkg.yaml
+      when: ansible_facts.os_family == "RedHat"
+    - include_tasks: install_Ubuntu_pkg.yaml
+      when: ansible_facts.os_family == "Ubuntu"

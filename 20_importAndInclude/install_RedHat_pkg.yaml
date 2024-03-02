@@ -1,0 +1,6 @@
+---
+- name: installing packages on RHEL Family
+  yum:
+    name: nginx
+    state: present
+    update_cache: true
