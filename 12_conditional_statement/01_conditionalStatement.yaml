@@ -1,0 +1,17 @@
+---
+- name: ansible condtional statement
+  hosts: localhost
+  gather_facts: false
+  vars:
+    a: 6
+    b: 3
+  tasks:
+    - name: finding larger number 
+      debug:
+        msg: "the largernumber is {{a}}"
+      when: a>b
+
+    - name: finding larger number 
+      debug:
+        msg: "the largernumber is {{b}}"
+      when: a<b
