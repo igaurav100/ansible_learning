@@ -1,0 +1,27 @@
+ironman@GauravPC:~/ansible/10_operation_on_list$ ansible-playbook 02_operation_on_string.yaml 
+
+PLAY [operation on list] ***************************************************************************************************************************************************************************************************
+
+TASK [debug] ***************************************************************************************************************************************************************************************************************
+ok: [localhost] => {
+    "msg": [
+        "myname : vr technology",
+        "myname : 13",
+        "myname : vr technology",
+        "myname : VR TECHNOLOGY",
+        "myname : Vr Technology",
+        "myname first character : v",
+        "myname last character: y",
+        "first char with filter: v",
+        "last char with filter: y",
+        "char from 3rd index technology",
+        "two char from index te",
+        "list from string: ['vr', 'technology']",
+        "list from string: ['vr technology']"
+    ]
+}
+
+PLAY RECAP *****************************************************************************************************************************************************************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+ironman@GauravPC:~/ansible/10_operation_on_list$ 
