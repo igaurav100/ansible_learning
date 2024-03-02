@@ -1,0 +1,12 @@
+---
+- name: operation on dictionary
+  hosts: localhost
+  gather_facts: false
+  vars: 
+    myDict: {'linux.service':'httpd', 'ubuntu':'apache2'}
+  tasks: 
+    - name: printing output
+      debug:
+        msg: 
+          - "{{myDict.get('linux.service')}}"
+          # - "{{myDict[('linux.service']}}"

@@ -1,0 +1,16 @@
+---
+- name: operation on dictionary
+  hosts: localhost
+  gather_facts: false
+  vars: 
+    myDict: {'linux':'httpd', 'ubuntu':'apache2'}
+  tasks: 
+    - name: printing output
+      debug:
+        msg: 
+          - "myDict is {{myDict}}"
+          - "myDict key are {{myDict.keys()}}"
+          - "myDict value are {{myDict.values()}}"
+          - "myDict {{myDict.get('linux')}}"
+          - "myDict {{myDict['linux']}}"
+          - "myDict {{myDict.linux}}"
