@@ -1,0 +1,22 @@
+---
+- name: operation on list
+  gather_facts: false
+  hosts: localhost
+  vars:
+    myname: "vr technology"
+  tasks:
+    - debug:
+       msg:
+        - "myname : {{myname}}"
+        - "myname : {{myname | length}}"
+        - "myname : {{myname | lower}}"
+        - "myname : {{myname | upper}}"
+        - "myname : {{myname | title}}"
+        - "myname first character : {{myname [0]}}"
+        - "myname last character: {{myname [-1]}}"
+        - "first char with filter: {{myname | first}}"
+        - "last char with filter: {{myname | last}}"
+        - "char from 3rd index {{ myname[3:]}}"
+        - "two char from index {{myname[3:5]}}"
+        - "list from string: {{myname | split}}"
+        - "list from string: {{myname | split('0')}}"

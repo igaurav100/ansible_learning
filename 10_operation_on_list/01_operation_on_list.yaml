@@ -1,0 +1,34 @@
+---
+- name: operation on list
+  gather_facts: false
+  hosts: localhost
+  vars:
+    mylist: [5,8,4,6,8,7]
+    mynewlist: [8,6,75,63,9]
+    mergelist: "{{mylist + mynewlist}}"
+  tasks:
+    - name: Printing list 
+      debug:
+        msg:
+         - "my list is {{mylist}}"
+         - "mynewlisy is {{mynewlist}}"
+         - "mymerged list is {{mergelist}}"
+         - "mylist length {{mylist | length}}"
+         - "mylist Min {{mylist | min}}"
+         - "mylist Max {{mylist | max}}"
+         - "mylist last number {{mylist | last}}"
+         - "mylist first number {{mylist | first}}"
+         - "mylist first number {{mylist [0]}}"
+         - "mylist last number {{mylist | last}}"
+
+    - name: setting new facts
+      set_fact:
+        newmergedlist: "{{mylist + mynewlist}}"
+        joindata: "{{mynewlist | join('-')}}"
+
+    - name: priniting setfacts
+      debug:
+        msg:
+        - "joined data is {{joindata}}"
+        - "joined data is {{newmergedlist}}"
+
