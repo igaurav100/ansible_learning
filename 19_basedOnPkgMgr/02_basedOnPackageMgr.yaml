@@ -1,0 +1,34 @@
+---
+- name: name finding the package manager
+  hosts: centos, ubuntu
+  gather_facts: true
+  vars:
+    reqPkgs:
+      "apt": ['apache2','vim','nginx']
+      "yum": ['httpd','vim','nginx']
+      "dnf": ['httpd','vim','nginx']
+  tasks:
+    - name: Checking the package manager
+      debug:
+        msg: "{{ansible_facts.pkg_mgr}}"
+
+    - name: installing packages using yum
+      yum:
+        name: "{{reqPkgs.yum}}"
+        state: present
+        update_cache: yes
+      when: ansible_facts.pkg_mgr == "yum"
+
+    - name: installing packages using apt
+      apt:
+        name: "{{reqPkgs.apt}}"
+        state: present
+        update_cache: yes
+      when: ansible_facts.pkg_mgr == "apt"
+
+    - name: installing packages using dnf
+      dnf:
+        name: "{{reqPkgs.dnf}}"
+        state: present
+        update_cache: yes
+      when: ansible_facts.pkg_mgr == "dnf"
