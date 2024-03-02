@@ -1,5 +1,5 @@
 ---
-- name: execute any cmd using ansible 
+- name: execute any cmd using ansible
   hosts: localhost
   gather_facts: false
   tasks:
@@ -7,4 +7,4 @@
       setup:
     - name: display the default facts
       debug:
-        msg: "{{ansible_facts.os_family}}" 
+        msg: "{{ansible_facts}}" # ansible_facts is the default variable
