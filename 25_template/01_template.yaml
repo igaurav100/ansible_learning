@@ -1,0 +1,36 @@
+---
+- name: testing the template module
+  hosts: ubuntu, centos
+  gather_facts: true
+  vars:
+    pkgName:
+      RedHat: httpd
+      Debian: apache2
+  become: yes
+  tasks:
+    - name: Installing packages on RHEL]
+      yum:
+        name: "{{pkgName.get(ansible_facts.os_family)}}"
+        state: present
+        update_cache: true
+      when: ansible_facts.os_family == "RedHat"
+
+    - name: Installing packages on Debian
+      apt:
+        name: "{{pkgName.get(ansible_facts.os_family)}}"
+        state: present
+        update_cache: true
+      when: ansible_facts.os_family == "Debian"
+
+    - name: copying the index.html to /var/www/html
+      copy:
+        src: hostname.j2
+        dest: /var/www/html/index.html
+      notify: Restart Webserver
+    
+  handlers:
+    - name: Restart Webserver
+      service:
+        name: "{{pkgName.get(ansible_facts.os_family)}}"
+        state: restarted
+      
