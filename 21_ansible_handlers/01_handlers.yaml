@@ -1,0 +1,17 @@
+---
+- name: using handlers
+  hosts: localhost
+  become: yes
+  gather_facts: true
+  tasks:
+    - name: installing nginx
+      apt: 
+        name: nginx
+        state: present        
+      notify: Start nginx
+  
+  handlers:
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started

@@ -1,0 +1,16 @@
+---
+- name: block and rescue
+  hosts: localhost
+  become: yes
+  gather_facts: true
+  tasks:
+    - name: using block and rescue
+      block:
+        - name: validation nginx installed
+          command:
+            cmd: 'ls -lrt /usr/sbin/nginx'
+      rescue:
+        - name: Installing nginx
+          apt:
+            name: nginx
+            state: absent

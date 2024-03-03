@@ -1,0 +1,23 @@
+---
+- name: setting JAVA_HOME
+  hosts: azcentos, azubuntu
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: downloading java
+      get_url:
+        url: https://download.oracle.com/java/21/latest/jdk-21_linux-aarch64_bin.tar.gz
+        dest: /tmp
+      delegate_to: localhost
+
+    - name: extracting java
+      unarchive:
+        src: /tmp/jdk-21_linux-aarch64_bin.tar.gz
+        dest: /opt/
+        # remote_src: true
+
+    - name: setting JAVA_HOME env
+      lineinfile:
+        path: /etc/environment
+        line: "export JAVA_HOME=/opt/jdk-21.0.2"
+        state: present

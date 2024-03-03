@@ -1,0 +1,22 @@
+---
+- name: using handlers
+  hosts: localhost
+  become: yes
+  gather_facts: true
+  tasks:
+    - name: finding the nginx version
+      command:
+        cmd: 'nginx -v'
+      register: nginxVersion
+      ignore_errors: true
+      
+    - name: finding uname info
+      command:
+        cmd: uname
+      register: unameOutput
+
+    - name: Displaying nginx version & uname details 
+      debug:
+        msg:
+          - "nginx version is {{nginxVersion}}"
+          - "uname info is {{unameOutput}}"
