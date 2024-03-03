@@ -1,0 +1,6 @@
+---
+# handlers file for httpd
+- name: Restart the Webserver
+  service:
+     name: "{{PkgName.get(ansible_facts.os_family}}"
+     state: restarted

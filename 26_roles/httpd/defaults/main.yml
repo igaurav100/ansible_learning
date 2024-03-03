@@ -1,0 +1,5 @@
+---
+# vars file for httpd
+PkgName:
+  RedHat: httpd
+  Ubuntu: apache2
